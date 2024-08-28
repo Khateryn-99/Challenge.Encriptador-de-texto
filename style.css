@@ -75,6 +75,7 @@ header img{
     width: 328px;
     height: 67px;
     border-radius: 24px;
+    border: 1px solid var(--dark-blue);
     font-weight: 600;
 }
 
@@ -169,13 +170,29 @@ header img{
     main {
         display: flex;
         flex-direction: column;
+        padding: 2rem;
     }
     .form__section{
-        justify-content: center;
-        margin-bottom: 2rem;
+        width: 90%;
+        margin: 0 2rem auto;
     }
     .text-area{
+        flex-direction: row;
+        gap: 2rem;
+        justify-content: center;
         width: 100%;
+    }
+    .botones{
+        flex-direction: row;
+        gap: 2rem;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10rem;
+    }
+    .btn-encriptar, .btn-desencriptar, .btn-limpiar, .btn-copiar {
+            width: 45%; /* Hacer que los botones ocupen menos espacio */
+            font-size: 1.8rem; /* Ajusta el tamaño de la fuente */
+            padding: 1.2rem 2rem;
     }
     .alert-msj{
         display: flex;
@@ -185,10 +202,27 @@ header img{
         margin-bottom: 1.5rem;
     }
     .result{
+        width: 90%;
+        padding: 2rem;
+        margin: 2rem auto;
         height: auto;
         min-width: 668px;
         margin-top: 2rem;
         min-height: 10rem;
+    }
+    .result-container{
+        align-items: center;
+        text-align: center;
+        gap: .3rem;
+        height: 15rem;
+    }
+    .result-title{
+        font-size: 2rem;
+        padding: 1.5rem;
+    }
+    .result-text{
+        font-size: 1.8rem;
+        padding: 1.5rem;
     }
     .result-img{
         display: none;
@@ -203,18 +237,28 @@ header img{
     }
     main {
         flex-direction: column;
+        padding: 1rem;
     }
     .text-area{
-        width: 100%;
-        margin-bottom: 1rem;
+        height: 40dvh;
+        font-size: 2rem;
+        padding: 1rem;
     }
     .botones{
+        width: 100%;
         display: flex;
         gap: 1rem;
         justify-content: center;
         flex-direction: column;
     }
+    .btn-encriptar, .btn-desencriptar, .btn-copiar{
+        width: 100%;
+        font-size: 1.4rem;
+        padding: 0.8rem 1.6rem;
+    }
     .form__section{
+        width: 100%;
+        margin: .1rem;
         display: flex;
         gap: 1rem;
         justify-content: center;
@@ -222,12 +266,29 @@ header img{
         align-items: center;
     }
     .result{
-        max-width: 668px;
+        width: 100%;
+        padding: 1rem;
         margin-top: 2rem;
         height: auto;
-        min-height: 10rem;
+    }
+    .result-container{
+        align-items: center;
+        text-align: center;
+        gap: .3rem;
+        height: 15rem;
+    }
+    .result-title{
+        font-size: 1.8rem;
+        padding: .4rem;
+    }
+    .result-text{
+        font-size: 1.4rem;
+        padding: .4rem;
     }
     .result-img{
         display: none;
+    }
+    .btn-copiar{
+        width: 100%;
     }
 }
