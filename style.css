@@ -69,7 +69,7 @@ header img{
     justify-content: center;
 }
 
-.btn-encriptar, .btn-desencriptar, .btn-copiar{
+.btn-encriptar, .btn-desencriptar{
     font-size: 1.6rem;
     padding: 1rem 2rem;
     width: 328px;
@@ -82,6 +82,7 @@ header img{
     background: var(--dark-blue);
     color: white;
     border: 1px solid var(--dark-blue);
+
 }
 
 .btn-desencriptar{
@@ -99,8 +100,16 @@ header img{
     width: 228px;
     height: 60px;
     border-radius: 24px;
+    border: 1px solid var(--dark-blue);
     font-weight: 600;
-    display: none;
+}
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start; /* Asegura que el contenido esté alineado al inicio (arriba) */
+    justify-content: start;
+    height: 100vh; /* Asegura que el contenedor ocupe todo el espacio disponible */
 }
 
 .result{
@@ -108,7 +117,7 @@ header img{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start; /* Alinea el contenido al inicio (arriba) */
     gap: 2rem;
     height: 80dvh;
     max-width: 90rem;
@@ -119,7 +128,7 @@ header img{
 .result-title{
     display: flex;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
     color: #343A40;
 }
@@ -127,7 +136,7 @@ header img{
 .result-text{
     display: flex;
     justify-content: center;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #495057;
 }
 
@@ -135,11 +144,20 @@ header img{
     display: block;
 }
 
-.btn-copiar{
+
+.btn-copiar {
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+    width: 328px;
+    height: 67px;
+    border-radius: 24px;
+    font-weight: 600;
     display: none;
     background: white;
     color: var(--dark-blue);
     border: 1px solid var(--dark-blue);
+    font-weight: 600;
+
 }
 
 @media screen and (min-width:768px) and (max-width:1023px){
