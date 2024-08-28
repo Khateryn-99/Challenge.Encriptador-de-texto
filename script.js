@@ -4,8 +4,6 @@ function ajustarVisibilidadImagen() {
 
     if (screenWidth <= 1023) { // Menor o igual a 1023px (incluye móviles y tabletas)
         document.querySelector(".result-img").style.display = "none";
-    } else {
-        document.querySelector(".result-img").style.display = "block";
     }
 }
 
