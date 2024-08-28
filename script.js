@@ -41,7 +41,7 @@ function btnDesencriptar() {
 // Función para mostrar el resultado y ocultar la imagen
 function mostrarResultado(resultado) {
     document.querySelector(".result-img").style.display = "none";
-    document.querySelector(".result-title").textContent = "Resultado:";
+    document.querySelector(".result-title").textContent = ""; // Eliminar el texto "Resultado:"
     document.querySelector(".result-text").textContent = resultado;
     document.querySelector(".btn-copiar").style.display = "block";
 }
@@ -56,14 +56,31 @@ function restablecer() {
 }
 
 function btnLimpiar() {
+    // Limpiar el campo de texto
     document.querySelector('.text-area').value = '';
+
+    // Restablecer la imagen de resultado
+    document.querySelector(".result-img").style.display = "block";
+
+    // Restablecer el título y el texto del resultado
+    document.querySelector(".result-title").textContent = "Ningún mensaje fue encontrado";
+    document.querySelector(".result-text").textContent = "Ingrese el texto que desees encriptar o desencriptar.";
+
+    // Ocultar el botón de copiar (opcional)
+    document.querySelector(".btn-copiar").style.display = "none";
 }
 
 // Función para copiar el contenido del textarea al portapapeles
 function btnCopiar() {
     const textarea = document.querySelector('.text-area');
-    textarea.select();
-    document.execCommand('copy');
+    const text = textarea.value;
+
+    // Usar la API Clipboard
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Texto copiado al portapapeles');
+    }).catch(err => {
+        console.error('No se pudo copiar el texto: ', err);
+    });
 }
 
 // Ejemplo de cómo invocar las funciones sin hacer clic
@@ -74,4 +91,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Llamar a la función de copiar automáticamente
     btnCopiar();
 });
-
