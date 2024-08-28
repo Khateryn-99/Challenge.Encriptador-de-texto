@@ -48,6 +48,7 @@ header img{
     color: var(--dark-blue);
     margin-bottom: 3rem;
     overflow: auto;
+    resize: none; /* Evita que el recuadro sea redimensionado */
 }
 
 ::placeholder{
@@ -68,31 +69,28 @@ header img{
     justify-content: center;
 }
 
-.btn-encriptar{
-    background: var(--dark-blue);
-    color: white;
+.btn-encriptar, .btn-desencriptar, .btn-copiar{
     font-size: 1.6rem;
     padding: 1rem 2rem;
     width: 328px;
     height: 67px;
     border-radius: 24px;
-    border: 1px solid var(--dark-blue);
     font-weight: 600;
+}
+
+.btn-encriptar{
+    background: var(--dark-blue);
+    color: white;
+    border: 1px solid var(--dark-blue);
 }
 
 .btn-desencriptar{
     background: var(--ligth-blue);
     color: var(--dark-blue);
-    font-size: 1.6rem;
-    padding: 1rem 2rem;
-    width: 328px;
-    height: 67px;
-    border-radius: 24px;
     border: 1px solid var(--dark-blue);
-    font-weight: 600;
 }
 
-.mensaje{
+.result{
     background: white;
     display: flex;
     flex-direction: column;
@@ -102,6 +100,7 @@ header img{
     height: 80dvh;
     max-width: 90rem;
     border-radius: 32px;
+    overflow-y: auto; /* Agrega una barra de desplazamiento si el contenido es demasiado grande */
 }
 
 .result-title{
@@ -127,13 +126,7 @@ header img{
     display: none;
     background: white;
     color: var(--dark-blue);
-    font-size: 1.6rem;
-    padding: 1rem 2rem;
-    width: 328px;
-    height: 67px;
-    border-radius: 24px;
     border: 1px solid var(--dark-blue);
-    font-weight: 600;
 }
 
 @media screen and (min-width:768px) and (max-width:1023px){
@@ -160,7 +153,7 @@ header img{
         font-size: 1.2rem;
         margin-bottom: 1.5rem;
     }
-    .mensaje{
+    .result{
         height: auto;
         min-width: 668px;
         margin-top: 2rem;
@@ -197,7 +190,7 @@ header img{
         flex-direction: column;
         align-items: center;
     }
-    .mensaje{
+    .result{
         max-width: 668px;
         margin-top: 2rem;
         height: auto;
