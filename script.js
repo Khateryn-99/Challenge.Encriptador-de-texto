@@ -109,3 +109,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Llamar a la función de limpiar automáticamente
     btnLimpiar();
 });
+
+// Función para ajustar la visibilidad de la imagen basada en el tamaño de la pantalla
+function ajustarVisibilidadImagen() {
+    const screenWidth = window.innerWidth;
+
+    // Oculta la imagen en dispositivos móviles y tabletas
+    if (screenWidth <= 1023) { // Ajusta el valor según tus necesidades
+        document.querySelector(".result-img").style.display = "none";
+    } else {
+        document.querySelector(".result-img").style.display = "block";
+    }
+}
+
+// Llamar a la función al cargar la página
+document.addEventListener('DOMContentLoaded', (event) => {
+    ajustarVisibilidadImagen();
+});
+
+// Llamar a la función al redimensionar la ventana
+window.addEventListener('resize', (event) => {
+    ajustarVisibilidadImagen();
+});
