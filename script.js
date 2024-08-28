@@ -22,16 +22,20 @@ function desencriptar(texto) {
 function btnEncriptar() {
     event.preventDefault();
     let mensaje = document.querySelector(".text-area").value;
-    let resultado = encriptar(mensaje);
-    mostrarResultado(resultado);
+    if (mensaje) {
+        let resultado = encriptar(mensaje);
+        mostrarResultado(resultado);
+    }
 }
 
 // Función para manejar el botón de desencriptar
 function btnDesencriptar() {
     event.preventDefault();
     let mensaje = document.querySelector(".text-area").value;
-    let resultado = desencriptar(mensaje);
-    mostrarResultado(resultado);
+    if (mensaje) {
+        let resultado = desencriptar(mensaje);
+        mostrarResultado(resultado);
+    }
 }
 
 // Función para mostrar el resultado y ocultar la imagen
@@ -39,17 +43,35 @@ function mostrarResultado(resultado) {
     document.querySelector(".result-img").style.display = "none";
     document.querySelector(".result-title").textContent = "Resultado:";
     document.querySelector(".result-text").textContent = resultado;
+    document.querySelector(".btn-copiar").style.display = "block";
 }
 
-// Función para copiar el texto al portapapeles
-function copiarTexto() {
-    let texto = document.querySelector(".result-text").textContent;
-    navigator.clipboard.writeText(texto).then(() => {
-        alert("Texto copiado al portapapeles");
-    });
+// Función para restablecer el estado original
+function restablecer() {
+    document.querySelector(".result-img").style.display = "block";
+    document.querySelector(".result-title").textContent = "Ningún mensaje fue encontrado";
+    document.querySelector(".result-text").textContent = "Ingrese el texto que desees encriptar o desencriptar.";
+    document.querySelector(".btn-copiar").style.display = "none";
+    document.querySelector(".text-area").value = "";
 }
 
-// Event listener para el botón de copiar
-document.querySelector(".btn-copiar").addEventListener("click", copiarTexto);
+function btnLimpiar() {
+    document.querySelector('.text-area').value = '';
+}
 
+// Función para copiar el contenido del textarea al portapapeles
+function btnCopiar() {
+    const textarea = document.querySelector('.text-area');
+    textarea.select();
+    document.execCommand('copy');
+}
+
+// Ejemplo de cómo invocar las funciones sin hacer clic
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Llamar a la función de limpiar automáticamente
+    btnLimpiar();
+
+    // Llamar a la función de copiar automáticamente
+    btnCopiar();
+});
 
