@@ -1,3 +1,24 @@
+// Función para ajustar la visibilidad de la imagen basada en el tamaño de la pantalla
+function ajustarVisibilidadImagen() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth <= 1023) { // Menor o igual a 1023px (incluye móviles y tabletas)
+        document.querySelector(".result-img").style.display = "none";
+    } else {
+        document.querySelector(".result-img").style.display = "block";
+    }
+}
+
+// Llamar a la función al cargar la página
+document.addEventListener('DOMContentLoaded', (event) => {
+    ajustarVisibilidadImagen();
+});
+
+// Llamar a la función al redimensionar la ventana
+window.addEventListener('resize', (event) => {
+    ajustarVisibilidadImagen();
+});
+
 // Función para encriptar el texto
 function encriptar(texto) {
     let textoEncriptado = texto.replace(/e/g, "enter")
@@ -40,7 +61,7 @@ function btnDesencriptar() {
 
 // Función para mostrar el resultado y ocultar la imagen
 function mostrarResultado(resultado) {
-    document.querySelector(".result-img").style.display = "none";
+    // No ocultar la imagen aquí si ya está oculta por CSS
     document.querySelector(".result-title").textContent = ""; // Eliminar el texto "Resultado:"
     document.querySelector(".result-text").textContent = resultado;
     document.querySelector(".btn-copiar").style.display = "block";
@@ -48,7 +69,9 @@ function mostrarResultado(resultado) {
 
 // Función para restablecer el estado original
 function restablecer() {
-    document.querySelector(".result-img").style.display = "block";
+    // Mostrar la imagen sólo si es un tamaño de pantalla grande
+    ajustarVisibilidadImagen();
+
     document.querySelector(".result-title").textContent = "Ningún mensaje fue encontrado";
     document.querySelector(".result-text").textContent = "Ingrese el texto que desees encriptar o desencriptar.";
     document.querySelector(".btn-copiar").style.display = "none";
@@ -60,7 +83,7 @@ function btnLimpiar() {
     document.querySelector('.text-area').value = '';
 
     // Restablecer la imagen de resultado
-    document.querySelector(".result-img").style.display = "block";
+    ajustarVisibilidadImagen();
 
     // Restablecer el título y el texto del resultado
     document.querySelector(".result-title").textContent = "Ningún mensaje fue encontrado";
@@ -87,7 +110,4 @@ function btnCopiar() {
 document.addEventListener('DOMContentLoaded', (event) => {
     // Llamar a la función de limpiar automáticamente
     btnLimpiar();
-
-    // Llamar a la función de copiar automáticamente
-    btnCopiar();
 });
