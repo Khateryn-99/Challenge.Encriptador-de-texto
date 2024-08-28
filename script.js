@@ -1,56 +1,55 @@
-// script.js
+// Función para encriptar el texto
+function encriptar(texto) {
+    let textoEncriptado = texto.replace(/e/g, "enter")
+                               .replace(/i/g, "imes")
+                               .replace(/a/g, "ai")
+                               .replace(/o/g, "ober")
+                               .replace(/u/g, "ufat");
+    return textoEncriptado;
+}
 
+// Función para desencriptar el texto
+function desencriptar(texto) {
+    let textoDesencriptado = texto.replace(/enter/g, "e")
+                                  .replace(/imes/g, "i")
+                                  .replace(/ai/g, "a")
+                                  .replace(/ober/g, "o")
+                                  .replace(/ufat/g, "u");
+    return textoDesencriptado;
+}
+
+// Función para manejar el botón de encriptar
 function btnEncriptar() {
-    const textArea = document.querySelector('.text-area');
-    const mensaje = textArea.value;
-    const mensajeEncriptado = encriptar(mensaje);
-    mostrarResultado(mensajeEncriptado);
+    event.preventDefault();
+    let mensaje = document.querySelector(".text-area").value;
+    let resultado = encriptar(mensaje);
+    mostrarResultado(resultado);
 }
 
+// Función para manejar el botón de desencriptar
 function btnDesencriptar() {
-    const textArea = document.querySelector('.text-area');
-    const mensaje = textArea.value;
-    const mensajeDesencriptado = desencriptar(mensaje);
-    mostrarResultado(mensajeDesencriptado);
-}
-
-function encriptar(mensaje) {
-    let encriptado = mensaje.replace(/e/g, 'enter')
-                            .replace(/i/g, 'imes')
-                            .replace(/a/g, 'ai')
-                            .replace(/o/g, 'ober')
-                            .replace(/u/g, 'ufat');
-    return encriptado;
-}
-
-function desencriptar(mensaje) {
-    let desencriptado = mensaje.replace(/enter/g, 'e')
-                               .replace(/imes/g, 'i')
-                               .replace(/ai/g, 'a')
-                               .replace(/ober/g, 'o')
-                               .replace(/ufat/g, 'u');
-    return desencriptado;
-}
-
-function mostrarResultado(mensaje) {
-    const resultContainer = document.querySelector('.result-container');
-    const resultTitle = document.querySelector('.result-title');
-    const resultText = document.querySelector('.result-text');
-    const resultImg = document.querySelector('.result-img');
-
-    resultTitle.textContent = 'Resultado:';
-    resultText.textContent = mensaje;
-    resultImg.style.display = 'none'; // Ocultar la imagen
-}
-
-// Asociar las funciones a los botones
-document.querySelector('.btn-encriptar').addEventListener('click', function(event) {
     event.preventDefault();
-    btnEncriptar();
-});
+    let mensaje = document.querySelector(".text-area").value;
+    let resultado = desencriptar(mensaje);
+    mostrarResultado(resultado);
+}
 
-document.querySelector('.btn-desencriptar').addEventListener('click', function(event) {
-    event.preventDefault();
-    btnDesencriptar();
-});
+// Función para mostrar el resultado y ocultar la imagen
+function mostrarResultado(resultado) {
+    document.querySelector(".result-img").style.display = "none";
+    document.querySelector(".result-title").textContent = "Resultado:";
+    document.querySelector(".result-text").textContent = resultado;
+}
+
+// Función para copiar el texto al portapapeles
+function copiarTexto() {
+    let texto = document.querySelector(".result-text").textContent;
+    navigator.clipboard.writeText(texto).then(() => {
+        alert("Texto copiado al portapapeles");
+    });
+}
+
+// Event listener para el botón de copiar
+document.querySelector(".btn-copiar").addEventListener("click", copiarTexto);
+
 
